@@ -3,8 +3,8 @@ import sys
 from serveripfinder import ServerIPFinder
 
 
-def main():
-    if len(sys.argv) < 2:
+def main(args):
+    if not args:
         print('This program captures network packets to get server IP addresses for realms and multiplayer games.')
         print('usage: ipfinder interface')
         return
@@ -16,7 +16,7 @@ def main():
         'Press Enter to continue...\n'
     )
     print('Capturing...')
-    finder.get_destinations(sys.argv[1])
+    finder.get_destinations(sys.argv[0])
     print()
     print('--- Servers ---')
     print('IP             | Port')
@@ -43,4 +43,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
